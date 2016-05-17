@@ -16,10 +16,10 @@
       <input type="hidden" name="venueId" value="$venues.getId()"></input>
       <input type="text" class="twelve columns" name="name" placeholder="Name"></input>
       <input type="text" class="twelve columns" name="genre" placeholder="Genre"></input>
-      <select type="text" class="twelve columns" name="newBand" placeholder="Select a Band">
-      #foreach($band in $allBands)
-      <option value = "$band.getId()">$band.getBandName()</option>
-      #end
+      <select type="text" class="twelve columns" name="newBand">
+        #foreach($band in $allBands)
+          <option value="$venue.getId()">$band.getName()</option>
+        #end
     </select>
     <button class="twelve columns" type="submit" name="button">Add!</button>
     </div>

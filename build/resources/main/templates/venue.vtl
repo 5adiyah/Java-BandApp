@@ -1,0 +1,28 @@
+<div class="box">
+  <h4>Name: $venues.getName()</h4>
+  <p>Address: $venues.getAddress()</p>
+  <p>Phone: $venues.getPhone()</p>
+
+  #if($venues.getBands())
+    <p>These Bands Played Here:</p>
+    #foreach($band in $venues.getBands())
+      <p>$band.getName()</p>
+    #end
+  #end
+
+  <h4>Add New Band:</h4>
+  <form class="form-control" action="/band_new" method="post">
+    <div class="row">
+      <input type="hidden" name="venueId" value="$venues.getId()"></input>
+      <input type="text" class="twelve columns" name="name" placeholder="Name"></input>
+      <input type="text" class="twelve columns" name="genre" placeholder="Genre"></input>
+      <select type="text" class="twelve columns" name="newBand">
+        #foreach($band in $allBands)
+          <option value="$venue.getId()">$band.getName()</option>
+        #end
+    </select>
+    <button class="twelve columns" type="submit" name="button">Add!</button>
+    </div>
+  </form>
+
+</div>

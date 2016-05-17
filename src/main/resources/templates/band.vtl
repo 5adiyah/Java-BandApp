@@ -1,11 +1,11 @@
 <div class="box">
-  <h3>Name: $bands.getName()</h3>
-  <h3>Genre: $bands.getGenre()</h3>
+  <h4>Name: $bands.getName()</h4>
+  <p>Genre: $bands.getGenre()</p>
 
   #if($bands.getVenues())
-    <h3>Previous Venues:</h3>
-    #foreach($venue in $bands.getVenues())
-      <p>$venue.getName()</p>
+    <p>Previous Venues:</p>
+    #foreach($band in $bands.getVenues())
+      <p>$band.getName()</p>
     #end
   #end
 

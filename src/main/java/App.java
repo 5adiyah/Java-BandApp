@@ -51,10 +51,10 @@ public class App {
 
     post("/venue_new", (request, response) -> {
       HashMap<String,Object> model = new HashMap<String,Object>();
-      int venueId = Integer.parseInt(request.queryParams("newVenue"));
-      int bandId = Integer.parseInt(request.queryParams("bandId"));
-      Venue venue = Venue.find(venueId);
+      int bandId = Integer.parseInt(request.queryParams("newBand"));
+      int venueId = Integer.parseInt(request.queryParams("venueId"));
       Band band = Band.find(bandId);
+      Venue venue = Venue.find(venueId);
       band.addVenue(venue);
       response.redirect("/bands/" + bandId);
       return null;
@@ -71,9 +71,9 @@ public class App {
       return null;
     });
 
-    get("/bands/:id", (request, response) -> {
+    get("/bands/:bId", (request, response) -> {
       HashMap<String,Object> model = new HashMap<String,Object>();
-      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      Band band = Band.find(Integer.parseInt(request.params(":bId")));
       model.put("bands", band);
       model.put("allVenues", Venue.allVenues());
       model.put("template", "templates/band.vtl");

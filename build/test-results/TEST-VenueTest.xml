@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="VenueTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2016-05-17T16:39:57" hostname="epicodus-67.local" time="0.144">
+  <properties/>
+  <testcase name="List_initiallyEmpty" classname="VenueTest" time="0.009"/>
+  <testcase name="save_assignsIdToVenue" classname="VenueTest" time="0.015"/>
+  <testcase name="venue_instantiates_asTrue" classname="VenueTest" time="0.005"/>
+  <testcase name="find_findsVenueInDatabase" classname="VenueTest" time="0.01"/>
+  <testcase name="getBands_returnsAllBands_true" classname="VenueTest" time="0.025"/>
+  <testcase name="save_savesIntoDatabase_true" classname="VenueTest" time="0.016"/>
+  <testcase name="getVenue_getsVenueInfo" classname="VenueTest" time="0.005"/>
+  <testcase name="update_updatesVenue_true" classname="VenueTest" time="0.028"/>
+  <testcase name="add_addsBandToVenue_true" classname="VenueTest" time="0.024"/>
+  <testcase name="equals_returnsTrueIfVenuesTheSame" classname="VenueTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

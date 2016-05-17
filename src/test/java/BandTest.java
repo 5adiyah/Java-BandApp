@@ -73,12 +73,12 @@ public class BandTest {
     assertEquals(0, newBand.getVenues().size());
   }
 
-  // @Test
-  // public void update_updatesBands_true() {
-  //   Band newBand = new Band("Band Name", "Genre");
-  //   newBand.save();
-  //   newBand.update("Band Name 2", "Band Genre 2");
-  //   //assertEquals("Band Name 2", Band.find(newBand.getId()).getName());
-  //   assertEquals("Band Genre 2", Band.find(newBand.getId()).getGenre());
-  // }
+  @Test
+  public void update_updatesBands_true() {
+    Band newBand = new Band("Band Name", "Genre");
+    newBand.save();
+    newBand.update("Band Name 2", "Band Genre 2");
+    assertEquals("Band Name 2", Band.find(newBand.getId()).getName());
+    assertEquals("Band Genre 2", Band.find(newBand.getId()).getGenre());
+  }
 }

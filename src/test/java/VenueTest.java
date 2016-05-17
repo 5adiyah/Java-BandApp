@@ -48,26 +48,26 @@ public class VenueTest {
     Venue newVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
     newVenue.save();
   }
-  // @Test
-  // public void add_addsBandToVenue_true() {
-  //   Venue newVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
-  //   newVenue.save();
-  //   Band myBand = new Band("Brand New", "Alternative");
-  //   myBand.save();
-  //   newVenue.addBand(myBand);
-  //   //Band savedBand = newVenue.getBands().get(0);
-  //   assertTrue(myBand.equals(savedBand));
-  // }
-  // @Test
-  // public void getBands_returnsAllBands_true() {
-  //   Venue newVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
-  //   newVenue.save();
-  //   Band myBand = new Band("Band Name", "Genre");
-  //   myBand.save();
-  //   newVenue.addBand(myBand);
-  //   //List savedBands = newVenue.getBands();
-  //   assertEquals(1, savedBands.size());
-  // }
+  @Test
+  public void add_addsBandToVenue_true() {
+    Venue newVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
+    newVenue.save();
+    Band myBand = new Band("Brand New", "Alternative");
+    myBand.save();
+    newVenue.addBand(myBand);
+    Band savedBand = newVenue.getBands().get(0);
+    assertTrue(myBand.equals(savedBand));
+  }
+  @Test
+  public void getBands_returnsAllBands_true() {
+    Venue newVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
+    newVenue.save();
+    Band myBand = new Band("Band Name", "Genre");
+    myBand.save();
+    newVenue.addBand(myBand);
+    List savedBands = newVenue.getBands();
+    assertEquals(1, savedBands.size());
+  }
   @Test
   public void update_updatesVenue_true() {
     Venue newVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
