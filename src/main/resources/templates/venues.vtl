@@ -1,0 +1,18 @@
+<div class="box">
+  #foreach ($venue in $venues)
+    <p><a href="/venues/$venue.getId()">$venue.getName()</a></p>
+  #end
+
+
+  <h4>Add New Venue:</h4>
+  <form class="form-control" action="/venues" method="post">
+    <div class="row">
+      <input type="text" class="six columns" name="name" placeholder="Name"></input>
+      <input type="text" class="six columns" name="phone" placeholder="Phone"></input>
+      <input type="text" class="twelve columns" name="address" placeholder="Address"></input>
+    </div>
+    <div class="row">
+      <button class="twelve columns" type="submit" name="button">Add!</button>
+    </div>
+  </form>
+</div>
