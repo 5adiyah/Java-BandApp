@@ -25,7 +25,7 @@ $ postgres
 $ psql
 ```
 
-Create `hair_salon` by following the steps below:
+Create `band_tracker` by following the steps below:
 ```
 $ CREATE DATABASE band_tracker;
 $ \c band_tracker;
