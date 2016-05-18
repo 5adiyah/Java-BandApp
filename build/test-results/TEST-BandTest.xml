@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BandTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2016-05-18T16:10:13" hostname="epicodus-117.local" time="0.138">
+  <properties/>
+  <testcase name="equals_returnsTrueifBandsTheSame" classname="BandTest" time="0.008"/>
+  <testcase name="allGetMethods_returnsBandInfo" classname="BandTest" time="0.005"/>
+  <testcase name="bandArray_initiallyEmpty" classname="BandTest" time="0.009"/>
+  <testcase name="add_addsVenueToBand_true" classname="BandTest" time="0.028"/>
+  <testcase name="method_instantiates_true" classname="BandTest" time="0.004"/>
+  <testcase name="save_savesIdToBand_true" classname="BandTest" time="0.013"/>
+  <testcase name="delete_deletesBandsAndVenuesAssociations" classname="BandTest" time="0.026"/>
+  <testcase name="update_updatesBands_true" classname="BandTest" time="0.021"/>
+  <testcase name="getVenues_returnsAllVenues_true" classname="BandTest" time="0.022"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

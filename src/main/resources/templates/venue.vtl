@@ -17,9 +17,9 @@
       <input type="text" class="twelve columns" name="name" placeholder="Name"></input>
       <input type="text" class="twelve columns" name="genre" placeholder="Genre"></input>
       <select type="text" class="twelve columns" name="newBand">
-        #foreach($band in $allBands)
-          <option value="$venue.getId()">$band.getName()</option>
-        #end
+      #foreach($band in $allBands)
+        <option value="$band.getId()">$band.getName()</option>
+      #end
     </select>
     <button class="twelve columns" type="submit" name="button">Add!</button>
     </div>

@@ -50,16 +50,14 @@ public class AppTest extends FluentTest {
   public void venuesNewBandTest() {
     goTo("http://localhost:4567/");
     click("a", withText ("VIEW OUR VENUES"));
-    assertThat(pageSource()).contains("Add New Venue:");
     fill("#name").with("myName");
     fill("#phone").with("myPhone");
     fill("#address").with("myAddress");
-    submit("btn");
+    submit(".btn");
     click("a", withText ("myName"));
     fill("#name").with("Name2");
     fill("#genre").with("Genre");
-    submit("btn");
-    click("a", withText ("Name2"));
+    submit(".btn");
     assertThat(pageSource()).contains("Name2");
   }
 
