@@ -109,5 +109,14 @@ public class App {
       return null;
     });
 
+    get("bands/:bId/delete", (request,response) -> {
+      HashMap<String,Object> model = new HashMap<String,Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":bId")));
+      int bandId = band.getId();
+      band.delete();
+      model.put("bands", band);
+      response.redirect("/bands");
+      return null;
+    });
   }
 }
