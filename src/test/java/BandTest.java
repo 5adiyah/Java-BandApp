@@ -41,34 +41,9 @@ public class BandTest {
   }
 
   @Test
-  public void add_addsVenueToBand_true() {
-    Band newBand = new Band("Band Name", "Genre");
-    newBand.save();
-    Venue myVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
-    myVenue.save();
-    newBand.addVenue(myVenue);
-    Venue savedVenue = newBand.getVenues().get(0);
-    assertTrue(myVenue.equals(savedVenue));
-  }
-
-  @Test
-  public void getVenues_returnsAllVenues_true() {
-    Band newBand = new Band("Band Name", "Genre");
-    newBand.save();
-    Venue myVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
-    myVenue.save();
-    newBand.addVenue(myVenue);
-    List savedBands = newBand.getVenues();
-    assertEquals(1, savedBands.size());
-  }
-
-  @Test
   public void delete_deletesBandsAndVenuesAssociations() {
     Band newBand = new Band("Band Name", "Genre");
     newBand.save();
-    Venue myVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
-    myVenue.save();
-    newBand.addVenue(myVenue);
     newBand.delete();
     assertEquals(0, newBand.getVenues().size());
   }

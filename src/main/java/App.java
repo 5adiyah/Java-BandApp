@@ -5,14 +5,6 @@ import static spark.Spark.*;
 
 public class App {
   public static void main(String[] args) {
-    ProcessBuilder process = new ProcessBuilder();
-     Integer port;
-     if (process.environment().get("PORT") != null) {
-         port = Integer.parseInt(process.environment().get("PORT"));
-     } else {
-         port = 4567;
-     }
-    setPort(port);
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
@@ -42,6 +34,8 @@ public class App {
       String type = request.queryParams("genre");
       Band newBand = new Band(name, type);
       newBand.save();
+      model.put("allVenues", Venue.allVenues());
+      model.put("allBands", Band.all());
       response.redirect("/bands");
       return null;
     });
@@ -53,27 +47,20 @@ public class App {
       String phone = request.queryParams("phone");
       Venue newVenue = new Venue(venue, address, phone);
       newVenue.save();
+      model.put("allVenues", Venue.allVenues());
+      model.put("allBands", Band.all());
       response.redirect("/venues");
     return null;
     });
 
-    post("/venue_new", (request, response) -> {
+    post("/add_band", (request, response) -> {
       HashMap<String,Object> model = new HashMap<String,Object>();
-      int bandId = Integer.parseInt(request.queryParams("newBand"));
+      int bandId = Integer.parseInt(request.queryParams("bandId"));
       int venueId = Integer.parseInt(request.queryParams("venueId"));
       Band band = Band.find(bandId);
       Venue venue = Venue.find(venueId);
-      band.addVenue(venue);
-      response.redirect("/bands/" + bandId);
-      return null;
-    });
-
-    post("/band_new", (request, response) -> {
-      HashMap<String,Object> model = new HashMap<String,Object>();
-      int bandId = Integer.parseInt(request.queryParams("newBand"));
-      int venueId = Integer.parseInt(request.queryParams("venueId"));
-      Band band = Band.find(bandId);
-      Venue venue = Venue.find(venueId);
+      model.put("allVenues", Venue.allVenues());
+      model.put("allBands", Band.all());
       venue.addBand(band);
       response.redirect("/venues/" + venueId);
       return null;
@@ -105,6 +92,8 @@ public class App {
       String newGenre = request.queryParams("newGenre");
       band.update(newName, newGenre);
       model.put("bands", band);
+      model.put("allVenues", Venue.allVenues());
+      model.put("allBands", Band.all());
       response.redirect("/bands/" + bandId);
       return null;
     });
@@ -115,6 +104,8 @@ public class App {
       int bandId = band.getId();
       band.delete();
       model.put("bands", band);
+      model.put("allVenues", Venue.allVenues());
+      model.put("allBands", Band.all());
       response.redirect("/bands");
       return null;
     });

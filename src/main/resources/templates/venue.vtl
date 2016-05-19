@@ -11,12 +11,10 @@
   #end
 
   <h4>Add New Band:</h4>
-  <form class="form-control" action="/band_new" method="post">
+  <form class="form-control" action="/add_band" method="post">
     <div class="row">
       <input type="hidden" name="venueId" value="$venues.getId()"></input>
-      <input type="text" class="twelve columns" name="name" placeholder="Name"></input>
-      <input type="text" class="twelve columns" name="genre" placeholder="Genre"></input>
-      <select type="text" class="twelve columns" name="newBand">
+      <select type="text" class="twelve columns" id="bandId" name="bandId">
       #foreach($band in $allBands)
         <option value="$band.getId()">$band.getName()</option>
       #end

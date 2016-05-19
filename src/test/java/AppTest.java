@@ -34,6 +34,14 @@ public class AppTest extends FluentTest {
     click("a", withText ("VIEW OUR VENUES"));
     assertThat(pageSource()).contains("Add New Venue:");
   }
+
+  @Test
+  public void bandsTest() {
+    goTo("http://localhost:4567/");
+    click("a", withText ("VIEW OUR BANDS"));
+    assertThat(pageSource()).contains("Add New Band:");
+  }
+
   @Test
     public void venuesFormTest() {
       goTo("http://localhost:4567/");
@@ -47,19 +55,75 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void venuesNewBandTest() {
-    goTo("http://localhost:4567/");
-    click("a", withText ("VIEW OUR VENUES"));
-    fill("#name").with("myName");
-    fill("#phone").with("myPhone");
-    fill("#address").with("myAddress");
-    submit(".btn");
-    click("a", withText ("myName"));
-    fill("#name").with("Name2");
-    fill("#genre").with("Genre");
-    submit(".btn");
-    assertThat(pageSource()).contains("Name2");
+    public void bandsFormTest() {
+      goTo("http://localhost:4567/");
+      click("a", withText ("VIEW OUR BANDS"));
+      fill("#name").with("Name");
+      fill("#genre").with("Genre");
+      submit("btn");
+      assertThat(pageSource()).contains("Name");
   }
+
+  @Test
+    public void venueIndividual() {
+      Venue myVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
+      myVenue.save();
+      String link = String.format("http://localhost:4567/venues/%d", myVenue.getId());
+      goTo(link);
+      assertThat(pageSource()).contains("Venue Name");
+      assertThat(pageSource()).contains("Venue address");
+      assertThat(pageSource()).contains("phoneNumber");
+  }
+
+  @Test
+    public void bandIndividual() {
+      Band myBand = new Band("Band Name", "Genre");
+      myBand.save();
+      String link = String.format("http://localhost:4567/bands/%d", myBand.getId());
+      goTo(link);
+      assertThat(pageSource()).contains("Band Name");
+      assertThat(pageSource()).contains("Genre");
+  }
+
+  @Test
+    public void linkBandAndVenue() {
+      Band myBand = new Band("Band Name", "Genre");
+      myBand.save();
+      Venue myVenue = new Venue("Venue Name", "Venue address", "phoneNumber");
+      myVenue.save();
+      String link = String.format("http://localhost:4567/venues/%d", myVenue.getId());
+      goTo(link);
+      fillSelect("#bandId").withText("Band Name");
+      submit("btn");
+      assertThat(pageSource()).contains("Band Name");
+  }
+
+  @Test
+    public void bandUpdate() {
+      Band myBand = new Band("Band Name", "Genre");
+      myBand.save();
+      myBand.update("New Band Name", "New Genre");
+      String link = String.format("http://localhost:4567/bands/%d", myBand.getId());
+      goTo(link);
+      assertThat(pageSource()).contains("New Band Name");
+    }
+
+  @Test
+    public void bandDelete() {
+      Band myBand = new Band("Band Name", "Genre");
+      myBand.save();
+      myBand.delete();
+      String link = String.format("http://localhost:4567/bands/%d", myBand.getId());
+      goTo(link);
+      click("a", withText("Delete Band"));
+      assertEquals(0, Band.all().size());
+    }
+
+
+
+
+
+
 
 
 }

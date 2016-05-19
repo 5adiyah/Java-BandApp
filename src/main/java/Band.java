@@ -76,15 +76,6 @@ public class Band {
     }
   }
 
-  public void addVenue(Venue venue) {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO bands_venues(id, venue_id) VALUES (:id, :venue_id)";
-      con.createQuery(sql)
-        .addParameter("id", this.getId())
-        .addParameter("venue_id", venue.getId())
-        .executeUpdate();
-    }
-  }
 
   public List<Venue> getVenues() {
     try(Connection con = DB.sql2o.open()) {

@@ -73,7 +73,7 @@ public class Venue {
 
   public void addBand(Band band) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO bands_venues (band_id, id) VALUES (:band_id, :id)";
+      String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :id)";
       con.createQuery(sql)
         .addParameter("id", this.getId())
         .addParameter("band_id", band.getId())

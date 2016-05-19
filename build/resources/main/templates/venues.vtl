@@ -1,6 +1,6 @@
 <div class="box">
   #foreach ($venue in $venues)
-    <p><a href="/venues/$venue.getId()">$venue.getName()</a></p>
+    <p><a class="venueNames" href="/venues/$venue.getId()">$venue.getName()</a></p>
   #end
 
 
@@ -12,7 +12,7 @@
       <input type="text" id="address" class="twelve columns" name="address" placeholder="Address"></input>
     </div>
     <div class="row">
-      <button class="twelve columns" type="submit" name="button">Add!</button>
+      <button class="twelve columns btn" type="submit" name="button">Add!</button>
     </div>
   </form>
 </div>
