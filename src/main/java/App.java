@@ -97,5 +97,17 @@ public class App {
       return new ModelAndView(model,layout);
     }, new VelocityTemplateEngine());
 
+    post("/bands/:bId/update", (request, response) -> {
+      HashMap<String,Object> model = new HashMap<String,Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":bId")));
+      int bandId = band.getId();
+      String newName = request.queryParams("newName");
+      String newGenre = request.queryParams("newGenre");
+      band.update(newName, newGenre);
+      model.put("bands", band);
+      response.redirect("/bands/" + bandId);
+      return null;
+    });
+
   }
 }
