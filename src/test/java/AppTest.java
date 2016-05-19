@@ -110,13 +110,13 @@ public class AppTest extends FluentTest {
 
   @Test
     public void bandDelete() {
-      Band myBand = new Band("Band Name", "Genre");
-      myBand.save();
-      myBand.delete();
-      String link = String.format("http://localhost:4567/bands/%d", myBand.getId());
-      goTo(link);
-      click("a", withText("Delete Band"));
-      assertEquals(0, Band.all().size());
+    Band myBand = new Band("Band Name", "Genre");
+    myBand.save();
+    myBand.delete();
+    String link = String.format("http://localhost:4567/bands/%d", myBand.getId());
+    goTo(link);
+    click("a", withText("Delete Band"));
+    assertEquals(0, Band.all().size());
     }
 
 
